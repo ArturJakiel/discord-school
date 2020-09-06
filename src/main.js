@@ -3,6 +3,12 @@ const { Client, Collection } = require("discord.js");
 
 const { token, prefix } = require("../config/config");
 
+if (!token) {
+  throw new Error(
+    "Missing TOKEN KEY \n create .env file witch TOKEN argument or add TOKEN as environmental value"
+  );
+}
+
 const client = new Client({ disableMentions: "everyone" });
 
 client.prefix = prefix;

@@ -25,21 +25,24 @@ module.exports.run = async (client) => {
           try {
             // eslint-disable-next-line global-require
             const module = require(`${filePath}/${dir}/${cmd}`);
-            console.log(`[✓]    ${module.info.name}`);
 
+            // set commands collection
             client.commands.set(module.info.name, module);
-            // ser aliases
+
+            // set aliases if exist aliases
             if (module.info.aliases && Array.isArray(module.info.aliases)) {
-              module.info.aliases.map((key) =>
-                client.aliases.set(key, module.info.name)
+              module.info.aliases.map((alias) =>
+                client.aliases.set(alias, module.info.name)
               );
             } else {
               console.error(
                 `commands error: missing aliases in array for ${module.info.name}`
               );
             }
+
+            console.log(`[✓]    ${module.info.name}`);
           } catch (moduleError) {
-            console.log(`[X]    ${module.info.name}`);
+            console.log(`[X]    ${cmd}`);
             console.error(moduleError);
             console.error("****************************************");
           }

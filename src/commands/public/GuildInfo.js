@@ -12,30 +12,23 @@ module.exports = {
     category: "public",
     permissions: [],
     description: "display information about server",
+    usage: "",
   },
 
-  run: async (client, message, args) => {
+  async run(client, message, args) {
     const botRoleColor =
-      message.guild.me.displayHexColor === "#000000"
-        ? "#96f2e3"
-        : message.guild.me.displayHexColor;
+      message.guild.me.displayHexColor === "#000000" ? "#96f2e3" : message.guild.me.displayHexColor;
 
     const aboutEmbedBox = new MessageEmbed()
       .setColor(botRoleColor)
-      .setTitle(`DiscordSchoolBot v${process.env.npm_package_version}`)
-      .addField("Developers: ", "Kizuhane", false)
-      .addField(
-        "Library",
-        `discord.js ${process.env.npm_package_dependencies_discord_js}`,
-        true
-      )
-      .addField(
-        "GitHub",
-        `discord.js ${process.env.npm_package_dependencies_discord_js}`,
-        true
-      );
-    // .setFooter(client.user.username,client.user.displayAvatarURL())
-    // setThumbnail('logo here');
+      .setAuthor(message.guild.name, message.guild.iconURL())
+      .setTitle(`${message.guild.name}`)
+      .setThumbnail(message.guild.iconURL());
+
+    if (message.guild.description) aboutEmbedBox.setDescription(message.guild.description);
+
+    if (message.guild.banner) aboutEmbedBox.setImage(message.guild.bannerURL());
+
     message.channel.send(aboutEmbedBox);
   },
 };

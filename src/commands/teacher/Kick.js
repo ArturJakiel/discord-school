@@ -9,10 +9,11 @@ module.exports = {
     category: "public",
     permissions: ["KICK_MEMBERS"],
     description: "Kick guild Members",
+    usage: `<user>`,
   },
 
-  run: async (client, message, args) => {
-    message.channel.send(`Kick command`);
+  async run(client, message, args) {
+    message.channel.send(`Kick command test`);
   },
 };
 

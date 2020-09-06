@@ -1,4 +1,4 @@
-# Discord School Bot 
+# Discord SchoolBot 
 Discord bot for school's to create, admin and maintain a Discord server for school
 
 ## WIP
@@ -50,4 +50,3 @@ Disord server template [Guid Name]
 - **!help** - list of common comand
 - **!about** - info about bot , [info, about]
 - **!Server** - info about current guilt (server) [Server, ServerInfo]
-

@@ -1,10 +1,14 @@
 {
-  "name": "discord-school",
+  "name": "discord-school-bot",
   "version": "0.0.1",
   "description": "Discord bot for schools to create, admin and maintain a Discord server for school. Bot automatically create channels, separate classroom nad roles. Written in javascript using discord.js",
+  "engines": {
+    "node": ">=10.0.0"
+  },
   "main": "main.js",
   "scripts": {
-    "start": "node src/main.js"
+    "start": "node src/main.js",
+    "set-token": "sh -c \"echo TOKEN=$0 > .env\""
   },
   "keywords": [
     "discord",

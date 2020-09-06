@@ -1,5 +1,7 @@
 const { MessageEmbed } = require("discord.js");
 
+const { developers } = require("../../../config/config");
+
 /**
  * @name About
  * @namespace commands
@@ -12,30 +14,37 @@ module.exports = {
     category: "public",
     permissions: [],
     description: "display information about bot",
+    usage: "",
   },
 
-  run: async (client, message, args) => {
+  async run(client, message, args) {
     const botRoleColor =
       message.guild.me.displayHexColor === "#000000"
         ? "#96f2e3"
         : message.guild.me.displayHexColor;
 
+    console.log(client.user);
+
     const aboutEmbedBox = new MessageEmbed()
       .setColor(botRoleColor)
+      .setAuthor(client.user.username, client.user.displayAvatarURL())
+      .setThumbnail(client.user.displayAvatarURL())
       .setTitle(`DiscordSchoolBot v${process.env.npm_package_version}`)
-      .addField("Developers: ", "Kizuhane", false)
+      .setDescription(process.env.npm_package_description)
       .addField(
-        "Library",
-        `discord.js ${process.env.npm_package_dependencies_discord_js}`,
-        true
+        "**Developers:**",
+        developers.map((data) => data.reduce((prev, curr) => `${prev} ${curr}`))
       )
       .addField(
-        "GitHub",
+        "**Library**",
         `discord.js ${process.env.npm_package_dependencies_discord_js}`,
-        true
+        false
+      )
+      .addField(
+        "**GitHub**",
+        `https://github.com/ArturJakiel/discord-school`,
+        false
       );
-    // .setFooter(client.user.username,client.user.displayAvatarURL())
-    // setThumbnail('logo here');
     message.channel.send(aboutEmbedBox);
   },
 };

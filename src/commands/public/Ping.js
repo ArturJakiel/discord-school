@@ -12,7 +12,7 @@ module.exports = {
     description: "display ping",
   },
 
-  run: async (client, message, args) => {
+  async run(client, message, args) {
     message.reply(`Ping! ${client.ws.ping}ms`);
   },
 };

@@ -1,7 +1,7 @@
 /**
  * @name Initialization
  * @namespace commands
- * @description send rich message with information about bot
+ * @description create chanel's template, roles, permission
  */
 module.exports = {
   info: {
@@ -9,10 +9,23 @@ module.exports = {
     aliases: ["initialization", "init"],
     category: "developers",
     permissions: ["ADMINISTRATOR"],
-    description: "display ping",
+    description: "create chanel's template, roles, permission",
+    usage: "",
   },
 
-  run: async (client, message, args) => {
-    message.channel.send(`${message.member.author} Ping`);
+  async run(client, message, args) {
+    message.channel.send(
+      `${this.info.description}\nanswer net question to finish initialization`
+    );
+
+    /**
+     * set default message notification for only @mentions
+     *    message.guild.defaultMessageNotifications = "MENTIONS":
+     *
+     * set chanel for logs
+     * systemChannelFlags: SystemChannelFlags { bitfield: 0 },
+     *
+     *
+     */
   },
 };
